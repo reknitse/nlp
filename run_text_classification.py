@@ -275,7 +275,7 @@ def main():
 
     if data_args.input_file_extension == "csv":
         # Loading a dataset from local csv files
-        datasets = load_dataset("csv", data_files=data_files, cache_dir=model_args.cache_dir)
+        datasets = load_dataset("csv", data_files=data_files, cache_dir=model_args.cache_dir, delimiter="|")
     else:
         # Loading a dataset from local json files
         datasets = load_dataset("json", data_files=data_files, cache_dir=model_args.cache_dir)
@@ -418,6 +418,7 @@ def main():
             cache_dir=model_args.cache_dir,
             revision=model_args.model_revision,
             use_auth_token=True if model_args.use_auth_token else None,
+            ignore_mismatched_sizes=True
         )
         # endregion
 
